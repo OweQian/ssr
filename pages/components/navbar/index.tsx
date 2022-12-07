@@ -1,0 +1,18 @@
+import { FC } from 'react';
+import styles from './index.module.scss';
+import Image from 'next/image';
+import LogoLight from '@/public/favicon.ico';
+
+export interface INavBarProps {}
+
+const NavBar: FC<INavBarProps> = ({}) => {
+  return (
+    <div className={styles.navBar}>
+      <a href="http://localhost:3000">
+        <Image src={LogoLight} width={70} height={20} alt="" />
+      </a>
+    </div>
+  )
+}
+
+export default NavBar;
