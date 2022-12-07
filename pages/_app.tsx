@@ -3,14 +3,22 @@ import { ILayoutProps } from '@/pages/components/layout';
 import Layout from '@/pages/components/layout';
 import type {AppProps, AppContext} from 'next/app';
 import App from 'next/app';
+import Head from 'next/head';
 import Code from '@/public/code.png';
 
 const MyApp = (data: AppProps & ILayoutProps) => {
   const { Component, pageProps, navbarData, footerData } = data;
   return (
-    <Layout navbarData={navbarData} footerData={footerData}>
-      <Component {...pageProps} />
-    </Layout>
+    <div>
+      <Head>
+        <title>A Demo for SSR官网开发</title>
+        <meta name="description" content="A Demo for SSR官网开发" />
+        <link rel="icon" href="/favicon.ico"/>
+      </Head>
+      <Layout navbarData={navbarData} footerData={footerData}>
+        <Component {...pageProps} />
+      </Layout>
+    </div>
   )
 }
 
