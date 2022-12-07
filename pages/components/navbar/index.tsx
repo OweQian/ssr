@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import styles from './index.module.scss';
 import Image from 'next/image';
-import LogoLight from '@/public/favicon.ico';
+import LogoLight from '@/public/logo_light.png';
 
 export interface INavBarProps {}
 

@@ -75,9 +75,9 @@ const Footer: FC<IFooterProps> = ({
       <div className={styles.bottomArea}>
         <div className={styles.codeArea}>
           <div>
-            <Image src={qrCode.image} alt={qrCode.text} width={56} height={56} />
+            <Image src={qrCode?.image} alt={qrCode?.text} width={56} height={56} />
           </div>
-          <div className={styles.text}>{qrCode.text}</div>
+          <div className={styles.text}>{qrCode?.text}</div>
         </div>
         <div className={styles.numArea}>
           <span>{copyRight}</span>
