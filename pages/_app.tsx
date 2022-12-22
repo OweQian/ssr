@@ -1,6 +1,6 @@
 import '../styles/globals.css'
-import { ILayoutProps } from '@/pages/components/layout';
-import Layout from '@/pages/components/layout';
+import { ILayoutProps } from '@/components/layout';
+import Layout from '@/components/layout';
 import type {AppProps, AppContext} from 'next/app';
 import App from 'next/app';
 import Head from 'next/head';

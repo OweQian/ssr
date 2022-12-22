@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import styles from './index.module.scss';
-import { INavBarProps } from '@/pages/components/navbar';
-import { IFooterProps } from '@/pages/components/footer';
-import NavBar from '@/pages/components/navbar';
-import Footer from '@/pages/components/footer';
+import { INavBarProps } from '@/components/navbar';
+import { IFooterProps } from '@/components/footer';
+import NavBar from '@/components/navbar';
+import Footer from '@/components/footer';
 
 export interface ILayoutProps {
   navbarData: INavBarProps;
