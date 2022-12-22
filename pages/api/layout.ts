@@ -1,21 +1,23 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import type {NextApiRequest, NextApiResponse} from "next";
 import axios from 'axios';
-import { ILayoutProps } from "@/components/layout";
-import { CMSDOMAIN } from "@/utils";
-import { isEmpty } from 'lodash';
+import {ILayoutProps} from "@/components/layout";
+import {CMSDOMAIN} from "@/utils";
+import {isEmpty} from 'lodash';
+import nextConnect from 'next-connect';
 
-const getLayoutData = (req: NextApiRequest, res: NextApiResponse<ILayoutProps>) => {
-  axios.get(`${CMSDOMAIN}/api/layouts`).then(result => {
-    const {
-      copy_right,
-      link_lists,
-      public_number,
-      qr_code,
-      qr_code_image,
-      site_number,
-      title
-    } = result.data || {};
-    res.status(200).json({
+const getLayoutData = nextConnect()
+  .get((req: NextApiRequest, res: NextApiResponse<ILayoutProps>) => {
+    axios.get(`${CMSDOMAIN}/api/layouts`).then(result => {
+      const {
+        copy_right,
+        link_lists,
+        public_number,
+        qr_code,
+        qr_code_image,
+        site_number,
+        title
+      } = result.data || {};
+      res.status(200).json({
       navbarData: {},
       footerData: {
         title,
@@ -38,8 +40,8 @@ const getLayoutData = (req: NextApiRequest, res: NextApiResponse<ILayoutProps>) 
         siteNumber: site_number,
         publicNumber: public_number,
       }
+      })
     })
   })
-}
 
 export default getLayoutData;
