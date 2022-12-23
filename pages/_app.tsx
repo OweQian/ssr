@@ -1,12 +1,13 @@
-import '../styles/globals.css'
+import './global.scss';
+import '../styles/globals.css';
 import { ILayoutProps } from '@/components/layout';
 import Layout from '@/components/layout';
 import type {AppProps, AppContext} from 'next/app';
 import App from 'next/app';
 import Head from 'next/head';
-import Code from '@/public/code.png';
 import axios from 'axios';
 import { LOCALDOMAIN } from "@/utils";
+import { ThemeContextProvider } from "@/stores/theme";
 
 const MyApp = (data: AppProps & ILayoutProps) => {
   const { Component, pageProps, navbarData, footerData } = data;
@@ -17,9 +18,11 @@ const MyApp = (data: AppProps & ILayoutProps) => {
         <meta name="description" content="A Demo for SSR官网开发" />
         <link rel="icon" href="/favicon.ico"/>
       </Head>
-      <Layout navbarData={navbarData} footerData={footerData}>
-        <Component {...pageProps} />
-      </Layout>
+      <ThemeContextProvider>
+        <Layout navbarData={navbarData} footerData={footerData}>
+          <Component {...pageProps} />
+        </Layout>
+      </ThemeContextProvider>
     </div>
   )
 }
