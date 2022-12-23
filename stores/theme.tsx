@@ -17,10 +17,18 @@ export const ThemeContext = createContext<IThemeContextProps>(
 export const ThemeContextProvider: FC<IProps> = ({ children }) => {
   const [theme, setTheme] = useState<Themes>(Themes.light);
 
+  // 监听本地缓存来同步不同页面间的主题
   useEffect(() => {
-    const item = localStorage.getItem('theme') as Themes || Themes.light
-    setTheme(item)
-    document.getElementsByTagName('html')[0].dataset.theme = item;
+    const checkTheme = (): void => {
+      const item = localStorage.getItem('theme') as Themes || Themes.light
+      setTheme(item)
+      document.getElementsByTagName('html')[0].dataset.theme = item;
+    }
+    checkTheme()
+    window.addEventListener('storage', checkTheme);
+    return (): void => {
+      window.removeEventListener('storage', checkTheme)
+    }
   }, [])
 
   return (
